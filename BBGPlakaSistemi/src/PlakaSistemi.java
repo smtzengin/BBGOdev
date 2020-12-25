@@ -1,7 +1,8 @@
 import java.util.Scanner;
 public class PlakaSistemi {
     public static void main(String[] args) throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
+	Scanner scanner = new Scanner(System.in);
+	    //Diziler ile şehirleri tanımladık
         String[][] sehirler= {
 			{"01" , "Adana"},
 			{"02" , "Adıyaman"},
@@ -86,9 +87,10 @@ public class PlakaSistemi {
 			{"81" , "Düzce"}
 	};
         
+	    // Kullanıcıdan Araç plakasındaki Şehir kodunu girmesini istedik
         System.out.print("Lütfen Plakanızın Şehir Kodunu Giriniz: ");
         int sehirPlaka = scanner.nextInt();
-        
+          // Bir sıkıntıdan dolayı 1-10 arasındaki şehir plakalarının başına çıktıda "0" eklenmiyordu bunun için kendim eklemek zorunda kladım
         if(sehirPlaka>0 && sehirPlaka<10){
             System.out.println("0"+sehirPlaka+" plakalı şehir: "+sehirler[sehirPlaka-1][1]);
         }
@@ -101,15 +103,17 @@ public class PlakaSistemi {
             System.exit(0);
         }
         
-        
+        //Kullanıcıdan Araç plakasının Orta Kısmını istedik
         System.out.print("Lütfen Plakanızın Orta Harf Kısmını Giriniz: ");
         String ortaPlaka = scanner.next();
         ortaPlaka = ortaPlaka.toUpperCase();
-        if(ortaPlaka.length()> 0 && ortaPlaka.length() < 4) {
+	    
+        if(ortaPlaka.length()> 0 && ortaPlaka.length() < 4)  // plakanın orta harf kısmının minumum 1 , maksiumum 4 olacak şekilde kontrolünü sağladık
+	{
             System.out.println("Kontrol Ediliyor...");
             Thread.sleep(3000);
-            //System.out.println("Aracınızın Orta Plakası : " + ortaPlaka);
             
+            // plakanın orta harf kısımlarının neleri temsil ettiğini kontrol ediyoruz
             if(ortaPlaka.equals("A")){
                 System.out.println("Aracınızın Orta Plakası : " + ortaPlaka);
                 System.out.println("Aracınızın plakası Asayişe bağlıdır...");
@@ -173,10 +177,13 @@ public class PlakaSistemi {
             System.exit(0);
         }
         
+	    
+	    // kullanıcıdan plakanın son nümerik kısımlarının girişini istedik
         System.out.println("Lütfen Plakanızın Son Nümerik Kısmını Giriniz : ");
         String sonPlaka = scanner.next();
-        int s1 = Integer.parseInt(sonPlaka);
+        int s1 = Integer.parseInt(sonPlaka); // String olarak aldığımız son nümerik kısmını int'e çevirdik
         
+	    // son nümerik kısmın minumum 1 maksimum 4 karakterden oluşacağını kontrol ettik
         if(sonPlaka.length() > 0 && sonPlaka.length()< 5) {
             System.out.println("Aracınızın Son Nümerik Plakası : " + sonPlaka);
         }
@@ -185,7 +192,7 @@ public class PlakaSistemi {
             System.exit(0);
         }
         
-        
+        //Yukarıda belirttiğim gibi 0-10 arasındaki plakaların çıktılarında başında "0" yazmadığı için kontrolünü kendimiz sağladık 
         if(sehirPlaka>0 && sehirPlaka<10) {
             System.out.println("Aracınızın Plakası : "+ "0" + sehirPlaka + " " + ortaPlaka +" " + sonPlaka);
         }

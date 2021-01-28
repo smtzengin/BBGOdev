@@ -1,67 +1,39 @@
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class EmailKontrol {
-    
-    public static void main(String[] args) throws InterruptedException {
-        //kullanıcının klavyeden değer girebilmesi için scanner objesini tanımlıyoruz
+     public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
+        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
         
- 
-        // kullancıya sistemimizde kayıtlı olan mail sağlayıcılarını listeliyoruz
-        System.out.println("Sistemimizde kayıtlı olan mail sağlayıcıları : ");
-        System.out.println("1 - @gmail.com");
-        System.out.println("2 - @outlook.com");
-        System.out.println("3 - @hotmail.com");
-        System.out.println("4 - @zoho.com");
-        System.out.println("5 - @yahoo.com");
-        System.out.println("6 - @aol.com");
-        System.out.println("7 - @love.com");
-        System.out.println("8 - @ygm.com");
-        System.out.println("9 - @games.com");
-        System.out.println("10 - @wow.com");
-        System.out.println("11 - @icloud.com");
-        System.out.println("12 - @me.com");
-        System.out.println("13 - @mac.com");
-        System.out.println("14 - @yandex.com");
-        System.out.println("15 - @mail.com");
-        System.out.println("16 - @email.com");
-        System.out.println("17 - @uniAdi.edu.tr");
-        
-        //kullanıcıdan email adres girişi alıyoruz
-        System.out.print("Lütfen E-mail Adresinizi giriniz(ör:blablabla@hotmail.com): ");
-        String email = scanner.nextLine(); // kullanıcıdan email adresini aldık
-        System.out.println("Kontrol Ediliyor...");
-        Thread.sleep(1000);
-        boolean at; // '@'in varlığını sorgulamak için boolean tipinde bir değişken tanımlıyoruz
-        boolean bosluk; // ' ' karakterlerin arasında bosluk var mı yok mu onu kontrol etmek için boolean tipinde bir değişken tanımlıyoruz
-        
-        // karakterlerin arasında bosluğun kontrolünü sağlıyoruz
-        if(email.contains(" ")){
-            bosluk = false; // eğer mail adresinin içerisinde bosluk karakteri varsa bosluk değişkenini false döndürüp kullanıcıya bir hata yazısı gönderip programı sonlandırıyoruz
-            System.out.println("E-mail adresinizin içerisinde space( ) bulunamaz!!! lütfen geçerli bir e-mail adresi giriniz!");
-            System.exit(0);
-        }
-        else{
-            // eğer bosluk karakteri yok ise true döndürüp programın diğer kontrolleri yapmasına izin veriyoruz
-            bosluk = true;
-        }
-        
-        if(email.contains("@")){
-            at = true;           
-            // email adresi içerisinde '@' in varlığını sorguluyoruz eğer var ise programa devam edip aşşağıda ki iç içe if - else if bloklarında bazı mail sağlayıcılarının varlığını sorguluyoruz!
+       System.out.println("E-mail Adresini Giriniz:");
+       String email = scanner.next();
+       
+        Matcher matcher = pattern.matcher(email);
+
+        if(matcher.matches() == true){
+            System.out.println("Tebrikler.. Girdiğiniz E-mail adresi doğru.");
+            System.out.println("Mail Sağlayıcı kontrolü yapalım..");
+            System.out.println("Kontrol Yapılıyor");
+            Thread.sleep(1000);
+            System.out.println("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+            
             if(email.contains("@gmail.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız Gmail , en iyi e-posta hizmetine kayıtlıdır.!! ");
                 System.out.println("15GB'a kadar depolama alanı ve gelen kutunuz için yüksek düzeyde güvenlik sunar.");
                 System.out.println("Hizmetin Dünya genelinde 1 milyardan fazla aktif kullancısı var!");
                 System.out.println("**************************************************************************************");
+                System.exit(0);
             }
             else if(email.contains("@outlook.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız outlook.com , şu an dünyanın en iyi e-posta servislerinden birine kayıtlıdır!! ");
@@ -70,7 +42,7 @@ public class EmailKontrol {
                 System.out.println("**************************************************************************************");
             }
             else if(email.contains("@hotmail.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız outlook.com , şu an dünyanın en iyi e-posta servislerinden birine kayıtlıdır!! ");
@@ -79,7 +51,7 @@ public class EmailKontrol {
                 System.out.println("**************************************************************************************");
             }
             else if(email.contains("@zoho.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız Zoho Mail , Zoho Mail kişisel amaçlı kullanımlar için ücretsizdir. ");
@@ -87,7 +59,7 @@ public class EmailKontrol {
                 System.out.println("**************************************************************************************");
             }
             else if(email.contains("@yahoo.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**************************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız Yahoo! Mail , Yahoo! Mail, ücretsiz e-posta sağlayıcısıdır. ");
@@ -97,7 +69,7 @@ public class EmailKontrol {
                 System.out.println("***************************************************************************************************");
             }
             else if(email.contains("@aol.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız AOL Mail , AOL Mail ücretsiz bir e-posta sağlayıcıdır. ");
@@ -106,7 +78,7 @@ public class EmailKontrol {
                 System.out.println("**************************************************************************************");
             }
             else if(email.contains("@love.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız AOL Mail , AOL Mail ücretsiz bir e-posta sağlayıcıdır. ");
@@ -115,7 +87,7 @@ public class EmailKontrol {
                 System.out.println("**************************************************************************************");
             }
             else if(email.contains("@ygm.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız AOL Mail , AOL Mail ücretsiz bir e-posta sağlayıcıdır. ");
@@ -124,7 +96,7 @@ public class EmailKontrol {
                 System.out.println("**************************************************************************************");
             }
             else if(email.contains("@games.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**********************************************************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız AOL Mail , AOL Mail ücretsiz bir e-posta sağlayıcıdır. ");
@@ -133,7 +105,7 @@ public class EmailKontrol {
                 System.out.println("*********************************************************************************************************************************");
             }
             else if(email.contains("@wow.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("*****************************************************************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız AOL Mail , AOL Mail ücretsiz bir e-posta sağlayıcıdır. ");
@@ -143,7 +115,7 @@ public class EmailKontrol {
             }
             
             else if(email.contains("@icloud.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("***************************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız Apple iCloud Hizmeti , iCloud'da yeni bir e-posta hesabı oluşturmak için bir iOS veya macOS'a ihtiyacınız vardır.");
@@ -152,7 +124,7 @@ public class EmailKontrol {
                 System.out.println("***************************************************************************************************");
             }
             else if(email.contains("@me.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("*************************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız Apple iCloud Hizmeti , iCloud'da yeni bir e-posta hesabı oluşturmak için bir iOS veya macOS'a ihtiyacınız vardır.");
@@ -161,7 +133,7 @@ public class EmailKontrol {
                 System.out.println("*************************************************************************************************");
             }
             else if(email.contains("@mac.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("***********************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız Apple iCloud Hizmeti , iCloud'da yeni bir e-posta hesabı oluşturmak için bir iOS veya macOS'a ihtiyacınız vardır.");
@@ -170,7 +142,7 @@ public class EmailKontrol {
                 System.out.println("************************************************************************************************");
             }
             else if(email.contains("@yandex.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız Yandex Mail , tamamen ücretsiz bir e-posta hizmetidir.");
@@ -179,7 +151,7 @@ public class EmailKontrol {
                 System.out.println("**************************************************************************************");
             }
             else if(email.contains("@mail.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız Mail.com , tamamen ücretsiz bir e-posta hizmetidir.");
@@ -188,7 +160,7 @@ public class EmailKontrol {
                
             }
             else if(email.contains("@email.com")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("**************************************************************************************");
                 System.out.println("E-mail adres sağlayıcınız Mail.com , tamamen ücretsiz bir e-posta hizmetidir.");
@@ -196,35 +168,24 @@ public class EmailKontrol {
                 System.out.println("**************************************************************************************");
             }
             else if(email.contains("edu.tr")){
-                System.out.println(email);
+                System.out.println("E-Mail Adresiniz : "+email);
                 System.out.println("BİLGİLENDİRME;");
                 System.out.println("*****************************************************************************************");
                 System.out.println("E-mail adresiniz, T.C. Yüksek Öğretim Kurumu(YÖK) tarafından onaylı öğretim kurumlarının kullanabileceği alan adına sahiptir");
                 System.out.println("****************************************************************************************");
             }
-            
             else{
-                // yukarıda tanımladığımız mail sağlayıcıları dışında bir mail sağlayıcısı girilirse kullanıcıya hata mesajını verip programı durduruyoruz
-                System.out.println("Geçerli bir mail sağlayıcısı girmeniz gerekiyor!!");
-                System.exit(0);
+                System.out.println("Geçerli bir mail sağlayıcı adresi giriniz..");
             }
-            
         }
         else{
-            // yukarıda '@'in varlığını kontrol edip diğer kontrolleri sağlamıştık, ama eğer email adresi içerisinde '@' bulunmuyorsa kullanıcıya hata mesajını verip programı durduruyoruz
-            at = false;
-            System.out.println("Lütfen Geçerli bir e-mail adresi giriniz...");    
-            System.exit(0);
+            System.out.println("Lütfen Geçerli Bir E-Mail Adresi Giriniz!");
         }
         
-        
-       // Yukarıda yazdıklarımın dışında bir çok mail sağlayıcısı bulunmakta ama ben bu kadarının kontrolünü yapmak istedim
-       // okuduğunuz için teşekkürler
-       
-       // 200541035
-       // Samet Zengin
-        
-        
-    }
+ 
+
+ 
+
     
+}
 }

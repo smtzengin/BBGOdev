@@ -6,16 +6,18 @@ import java.util.regex.Pattern;
 
 public class EmailKontrol {
      public static void main(String[] args) throws InterruptedException {
-        Scanner scanner = new Scanner(System.in);
-        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
-        Pattern pattern = Pattern.compile(regex);
+        Scanner scanner = new Scanner(System.in); // kullanıcıdan giriş almak için scanner objesini tanımlıyoruz
+        String regex = "^[A-Za-z0-9+_.-]+@(.+)$"; // kullanıcı e-mail giriş yaptığında içerisinde bulunacak & bulunmayacak karakterleri regex kontrolüyle yapıyoruz
+        Pattern pattern = Pattern.compile(regex); 
         
        System.out.println("E-mail Adresini Giriniz:");
-       String email = scanner.next();
+       String email = scanner.next(); // kullanıcıdan email girişi alıyoruz
        
-        Matcher matcher = pattern.matcher(email);
+        Matcher matcher = pattern.matcher(email); // kullanıcının girdiği email adresinde bulunmasını istediğimiz karakterler var mı yok mu onu kontrol ediyoruz eğer var ise true, yoksa false döndürücek
+          
 
         if(matcher.matches() == true){
+             //eğer doğru girilmişse 
             System.out.println("Tebrikler.. Girdiğiniz E-mail adresi doğru.");
             System.out.println("Mail Sağlayıcı kontrolü yapalım..");
             System.out.println("Kontrol Yapılıyor");
@@ -179,6 +181,8 @@ public class EmailKontrol {
             }
         }
         else{
+             
+             //eğer kullanılmayacak harfler,semboller girilmişse kullanıcıya aşşağıdaki çıktıyı yolluyoruz
             System.out.println("Lütfen Geçerli Bir E-Mail Adresi Giriniz!");
         }
         

@@ -1,3 +1,7 @@
+// 200541035 - SAMET ZENGIN
+// FIRAT UNİVERSİTESİ YAZILIM MUHENDISLIGI 1.SINIF
+
+
 import java.util.Scanner;
 public class PlakaSistemi {
     public static void main(String[] args) throws InterruptedException {

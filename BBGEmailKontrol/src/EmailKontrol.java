@@ -1,3 +1,5 @@
+// 200541035 - SAMET ZENGIN
+// FIRAT UNİVERSİTESİ YAZILIM MUHENDISLIGI 1.SINIF
 
 import java.util.Scanner;
 import java.util.regex.Matcher;
